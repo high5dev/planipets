@@ -1,0 +1,125 @@
+.errorPageMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100vh - 100px);
+  img {
+    margin-top: -50px;
+  }
+  h2 {
+    font-family: Poppins;
+    font-weight: normal;
+    font-size: 27px;
+    text-align: center;
+    color: #051e0c;
+    margin: 0;
+    margin-top: 30px;
+  }
+  .buttonContainer {
+    text-align: center !important;
+  }
+  button,
+  input.submit {
+    width: 150px !important;
+    height: 40px !important;
+    background: #051e0c !important;
+    border: none !important;
+    border-radius: 10px !important;
+    color: white !important;
+    font-weight: bold !important;
+    font-family: Poppins !important;
+    letter-spacing: 1px !important;
+    font-size: 16px !important;
+    margin-top: 30px;
+  }
+  .inputDiv {
+    width: 377px;
+    height: 59px;
+    border-radius: 29.5px;
+    background: #fff;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    position: relative;
+    margin: 0px 12px;
+    @media screen and (max-width: 1440px) {
+      height: 40px;
+      width: 35%;
+      @media screen and (max-width: 1024px) {
+        width: 40%;
+        height: 40px;
+      }
+      @media screen and (max-width: 600px) {
+        width: 100%;
+        margin: 0 !important;
+        margin-top: 10px !important;
+      }
+    }
+    &.filter {
+      width: 35%;
+      @media screen and (max-width: 1440px) {
+        width: 35%;
+      }
+      @media screen and (max-width: 1024px) {
+        width: 40%;
+        height: 42px;
+        margin: 11px 12px;
+      }
+      @media screen and (max-width: 600px) {
+        width: 100%;
+        margin: 0 !important;
+        margin-top: 10px !important;
+      }
+    }
+    &.location {
+      width: 261px;
+      @media screen and (max-width: 1440px) {
+        width: 20%;
+      }
+      @media screen and (max-width: 1024px) {
+        width: 25%;
+      }
+      @media screen and (max-width: 600px) {
+        width: 100%;
+        margin: 0 !important;
+        margin-top: 10px !important;
+      }
+    }
+    &.selectDiv {
+      padding: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    svg {
+      position: absolute;
+    }
+    input {
+      border: 1px solid black;
+      height: 90%;
+      width: 100%;
+      outline: none;
+      border: none;
+      padding: 0 30px;
+      font-family: Poppins;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 32px;
+      text-align: center;
+      color: #a4a4a4;
+      @media screen and (max-width: 1440px) {
+        font-size: 16px;
+      }
+    }
+    .ant-select {
+      width: 90%;
+      border: none;
+      .ant-select-selector {
+        border: none;
+        box-shadow: none !important;
+      }
+    }
+  }
+}

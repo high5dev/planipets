@@ -1,0 +1,72 @@
+.ajax-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 50% 50%;
+  transform: rotate(90deg) translate(-50%, -50%);
+  font-size: 50px;
+  width: 1em;
+  height: 3em;
+  color: #26914a;
+
+  .paw {
+    width: 1em;
+    height: 1em;
+    animation: 2050ms pawAnimation ease-in-out infinite;
+    opacity: 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .icon {
+      fill: currentColor;
+    }
+
+    &:nth-child(odd) {
+      transform: rotate(-10deg);
+    }
+
+    &:nth-child(even) {
+      transform: rotate(10deg) translate(125%, 0);
+    }
+
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{(($i * -1)+6) * 0.25}s;
+      }
+    }
+
+    .no-cssanimations & {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes pawAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.loaderMain {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  top: 0;
+  left: 0;
+  z-index: 99999999;
+  .logoImage {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+  }
+}
