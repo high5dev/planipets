@@ -1,131 +1,131 @@
 .loginPageMain {
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	.imageDivMain {
-		width: 55%;
-		height: 100%;
-		@media screen and (max-width: 600px) {
-			display: none;
-		}
-		position: relative;
-		.imageDiv {
-			width: 100%;
-			height: 100%;
-			background-position: center;
-			background-size: cover;
-		}
-		.overlay {
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			top: 0;
-			left: 0;
-			background: #26914a;
-			border: 1px solid #707070;
-			opacity: 0.65;
-		}
-	}
-	.formDiv {
-		width: 45%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		padding: 70px 120px;
-		@media screen and (max-width: 1440px) {
-			padding: 60px 60px;
-		}
-		@media screen and (max-width: 1024px) {
-			padding: 60px 60px;
-		}
-		@media screen and (max-width: 768px) {
-			padding: 40px 40px;
-		}
-		@media screen and (max-width: 600px) {
-			width: 100%;
-			padding: 40px 20px;
-		}
-		img {
-			width: 200px;
-			@media screen and (max-width: 1440px) {
-				width: 150px;
-			}
-		}
-		.inputGroup {
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			margin-top: 80px;
-			@media screen and (max-width: 1440px) {
-				margin-top: 80px;
-			}
-			@media screen and (max-width: 600px) {
-				margin-top: 40px;
-			}
-			.inputDiv {
-				display: flex;
-				flex-direction: column;
-				width: 100%;
-				align-items: flex-end;
-				margin-top: 25px;
-				position: relative;
-				@media screen and (max-width: 1440px) {
-					margin-top: 15px;
-				}
-				input {
-					width: 100%;
-					height: 78px;
-					border-radius: 4px;
-					background: #ececec;
-					border: none;
-					font-family: Poppins;
-					font-weight: 300;
-					font-size: 24px;
-					text-align: left;
-					color: #707070;
-					padding: 20px;
-					outline: none;
-					position: relative;
-					@media screen and (max-width: 1440px) {
-						height: 40px;
-						font-size: 16px;
-						padding: 10px;
-					}
-				}
-				svg {
-					margin-top: 10px;
-					cursor: pointer;
-					position: absolute;
-					right: 20px;
-					top: 5px;
-					@media screen and (max-width: 1440px) {
-						width: 16px;
-						position: absolute;
-						right: 20px;
-						top: 5px;
-					}
-				}
-			}
-			.checkboxRemeber {
-				width: 200px;
-				font-family: Poppins;
-				font-weight: 300;
-				font-size: 20px;
-				text-align: left;
-				color: #707070;
-				margin: 20px 0px;
-				@media screen and (max-width: 1440px) {
-					font-size: 16px;
-				}
-			}
-			.ant-checkbox-wrapper:hover .ant-checkbox-inner,
-			.ant-checkbox:hover .ant-checkbox-inner,
-			.ant-checkbox-input:focus + .ant-checkbox-inner {
-				border-color: #707070;
-			}
-			.ant-checkbox-inner {
-				border-color: #707070;
-			}
+  // width: 100vw;
+  height: 100vh;
+  display: flex;
+  .imageDivMain {
+    width: 55%;
+    height: 100%;
+    @media screen and (max-width: 600px) {
+      display: none;
+    }
+    position: relative;
+    .imageDiv {
+      width: 100%;
+      height: 100%;
+      background-position: center;
+      background-size: cover;
+    }
+    .overlay {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #26914a;
+      border: 1px solid #707070;
+      opacity: 0.65;
+    }
+  }
+  .formDiv {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 70px 120px;
+    @media screen and (max-width: 1440px) {
+      padding: 60px 60px;
+    }
+    @media screen and (max-width: 1024px) {
+      padding: 60px 60px;
+    }
+    @media screen and (max-width: 768px) {
+      padding: 40px 40px;
+    }
+    @media screen and (max-width: 600px) {
+      width: 100%;
+      padding: 40px 20px;
+    }
+    img {
+      width: 200px;
+      @media screen and (max-width: 1440px) {
+        width: 150px;
+      }
+    }
+    .inputGroup {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin-top: 80px;
+      @media screen and (max-width: 1440px) {
+        margin-top: 80px;
+      }
+      @media screen and (max-width: 600px) {
+        margin-top: 40px;
+      }
+      .inputDiv {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-end;
+        margin-top: 25px;
+        position: relative;
+        @media screen and (max-width: 1440px) {
+          margin-top: 15px;
+        }
+        input {
+          width: 100%;
+          height: 60px;
+          border-radius: 4px;
+          background: #ececec;
+          border: none;
+          font-family: Poppins;
+          font-weight: 300;
+          font-size: 20px;
+          text-align: left;
+          color: #707070;
+          padding: 10px 20px;
+          outline: none;
+          position: relative;
+          @media screen and (max-width: 1440px) {
+            height: 40px;
+            font-size: 16px;
+            padding: 10px;
+          }
+        }
+        svg {
+          margin-top: 10px;
+          cursor: pointer;
+          position: absolute;
+          right: 20px;
+          top: 5px;
+          @media screen and (max-width: 1440px) {
+            width: 16px;
+            position: absolute;
+            right: 20px;
+            top: 5px;
+          }
+        }
+      }
+      .checkboxRemeber {
+        width: 200px;
+        font-family: Poppins;
+        font-weight: 300;
+        font-size: 20px;
+        text-align: left;
+        color: #707070;
+        margin: 20px 0px;
+        @media screen and (max-width: 1440px) {
+          font-size: 16px;
+        }
+      }
+      .ant-checkbox-wrapper:hover .ant-checkbox-inner,
+      .ant-checkbox:hover .ant-checkbox-inner,
+      .ant-checkbox-input:focus + .ant-checkbox-inner {
+        border-color: #707070;
+      }
+      .ant-checkbox-inner {
+        border-color: #707070;
+      }
 
       button {
         width: 245px;
@@ -138,7 +138,7 @@
         color: #fff;
         border: none;
         margin: auto;
-        margin-top: 80px;
+        margin-top: 50px;
         @media screen and (max-width: 1440px) {
           margin-top: 30px;
           height: 40px;
@@ -221,10 +221,10 @@
 
       .alert {
         position: relative;
-        padding: .75rem 1.25rem;
+        padding: 0.75rem 1.25rem;
         margin-bottom: 1rem;
         border: 1px solid transparent;
-        border-radius: .25rem;
+        border-radius: 0.25rem;
       }
     }
   }

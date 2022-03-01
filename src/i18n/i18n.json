@@ -1,0 +1,21 @@
+{
+  "enUS": {
+    "translation": {
+      "welcome": "Welcome to React, react-i18next and date-fns",
+      "selectLanguage": "Select language:",
+      "dates": {
+        "fullDate": "The date is {{ date, short }}",
+        "localisedDate": "In my language, we write a date as: {{ date, long }}",
+        "weekDay": "Today is a {{ date, EEEE }}.",
+        "postedOn": "The message was posted {{ date, relative }} (that is {{ date, ago }})."
+      },
+      "language": {
+        "en": "English",
+        "nl": "Dutch"
+      }
+    }
+  },
+  "fr": {
+    "translation": {}
+  }
+}

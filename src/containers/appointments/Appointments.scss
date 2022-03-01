@@ -1,0 +1,13 @@
+.wrapper {
+  max-width: 480px;
+}
+
+.card {
+  box-shadow: 0 0 10px #cfc5c59e;
+}
+
+@media screen and (min-width: 1200px) {
+  .past-container {
+    border-left: 1px solid #f0f0f0;
+  }
+}
