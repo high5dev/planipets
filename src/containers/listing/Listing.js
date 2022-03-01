@@ -15,14 +15,20 @@ import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { Input, Select } from "antd";
 
+import  PlacesAutocomplete from "../../modules/gmap";
+import  RecentSearches from "../../modules/search";
+
 const { Option } = Select;
 
 function Listing(props) {
     let urlParams = new URLSearchParams(props.location.search);
 
     const [Filter, setFilter] = useState({
-        name: '', location: '', animal: urlParams.get('animal') || '', type: urlParams.get('type') || ''
+        name: '', location: urlParams.get('location'), animal: urlParams.get('animal') || '', type: urlParams.get('type') || '',
+		address: urlParams.get('address')
     })
+	
+	let typeVal = urlParams.get('type');
 
     useEffect(() => {
         props.fetchFilters()
@@ -45,7 +51,7 @@ function Listing(props) {
 
     const getVets = () => {
         // Prepare search string;
-        let searchString = `name=${Filter.name}&location=${Filter.location}&animal=${Filter.animal}&type=${Filter.type}`;
+        let searchString = `location=${Filter.location}&type=${Filter.type}`;
         props.fetchVets(searchString)
         setFilter({
             name: '', location: '', animal: '', type: ''
@@ -145,42 +151,21 @@ function Listing(props) {
                             </svg>
                             <input type="text" placeholder="Location" name="location" value={Filter.location} onChange={filterHandler} />
                         </div> */}
+					<div class="inputDiv">
+						 <Input
+							suffixIcon={null}
+							
+							className="select ant-select"
+							placeholder="Professional"
+							name="type"
+							value={typeVal}
+						/>
+		<RecentSearches />
+                 </div>      
 
-                        <div className="inputDiv filter selectDiv">
-
-                            <Dropdown className="select Animal" overlay={professionalMenu} trigger={['click']}>
-                                <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                                    {professional} <DownOutlined />
-                                </a>
-                            </Dropdown>
-                            {/* <Select defaultValue="Animal" >
-    {
-        props.store.animals && 
-        props.store.animals.map((animal, index) => <Option key={index} value={animal.id}>{ animal.name }</Option>)
-    }
-</Select> */}
-                        </div>
-
-                        <div className="inputDiv filter selectDiv">
-
-                            <Dropdown className="select Animal" overlay={animalMenu} trigger={['click']}>
-                                <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-                                    {selectAnimal} <DownOutlined />
-                                </a>
-                            </Dropdown>
-                            {/* <Select defaultValue="Animal" >
-    {
-        props.store.animals && 
-        props.store.animals.map((animal, index) => <Option key={index} value={animal.id}>{ animal.name }</Option>)
-    }
-</Select> */}
-                        </div>
-
-
-
-
-                        <div className="inputDiv filter selectDiv">
-                            <Input className="select Animal" placeholder='Ville' />
+						<div class="inputDiv">
+                            <PlacesAutocomplete divWidth="100%" inpVal={Filter.address}></PlacesAutocomplete>
+						</div>
                             {/* <Dropdown className="select Animal" overlay={villaMenu} trigger={['click']}>
                                 <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
                                     {selectVilla} <DownOutlined />
@@ -206,7 +191,6 @@ function Listing(props) {
                                     props.store.types.map((type, index) => <Option key={index} value={type.id}>{type.name}</Option>)
                                 }
                             </Select> */}
-                        </div>
 
 
                     </div>

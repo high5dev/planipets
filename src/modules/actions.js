@@ -100,7 +100,7 @@ export const getStaff = (service_id) => dispatch => {
 
 // Fetch Vets;
 export const fetchVets = (search_string) => dispatch => {
-    axios.get('/shops?' + search_string, { headers: { Authorization: localStorage.getItem('cookie-token') } }).then(res => {
+    axios.get('shops?' + search_string, { headers: { Authorization: localStorage.getItem('cookie-token') } }).then(res => {
         dispatch({
             type: SET_VETS,
             payload: res.data
@@ -485,4 +485,3 @@ let obj = [
         ]
     }
 ]
-

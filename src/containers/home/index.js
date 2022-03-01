@@ -145,6 +145,7 @@ function Home(props) {
       </div>
       <div className="secondSection">
         <div className="container secondSectionContainer">
+			
           <div className="textDiv">
             {/* <p>Trouvez le toilletteur qui prendra soin de <br />votre fidèle compagnon</p> */}
             <p>
@@ -152,25 +153,19 @@ function Home(props) {
               rendez-vous en ligne pour vos animaux
             </p>
           </div>
+<form action="/vet-listings" method="get" style={{ width: "80%" }}>
           <div className="buttonDiv" onClick={()=>console.log(props.store)}>
-            <Select
-              className="select Animal"
-              name="professional"
-              defaultValue="Professional"
-            onChange={(e) =>
-              setFilter({
-                ...filter,
-                professional: props.store.types.find((el) => el.id === e).name,
-              })
-            }
-            >
-              {props.store.types &&
-                props.store.types.map((types, index) => (
-              <Option key={index} value={types.id}>
-                {types.name}
-              </Option>
-              ))}
-            </Select>
+			  
+          <Input
+                        suffixIcon={null}
+                        className="select ant-select"
+                        showSearch
+                        style={{ width: "60%" }}
+                        placeholder="Professional"
+                        optionFilterProp="children"
+						name="type"
+                        
+                    />
             <Select
               className="select villa"
               name="animal"
@@ -199,7 +194,7 @@ function Home(props) {
               </svg> 
             </button>
               */}
-                   <PlacesAutocomplete></PlacesAutocomplete>
+                   <PlacesAutocomplete divWidth="60%"></PlacesAutocomplete>
 {/* 
             <Select
               suffixIcon={null}
@@ -233,22 +228,17 @@ function Home(props) {
                 ))}
             </Select> */}
 
-            <Link
-              to={
-                filter.type || filter.animal
-                  ? `/vet-listings?animal=${filter.animal}&type=${filter.type}`
-                  : `/vet-listings`
-              }
-            >
+           
               {/* <button>Trouver votre toiletteur</button> */}
-              <button className="searchButton">
+              <button className="searchButton" type="submit">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                 </svg>
               </button>
 
-            </Link>
+			
           </div>
+</form>
         </div>
       </div>
 
