@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const instance = axios.create({
     // baseURL: 'https://petsgroomer-test.nextbitsolution.com/api/'
-    baseURL: 'https://staging.planipets.com/api/'
-    // baseURL: "http://localhost:8000/api/"
+    baseURL: 'https://app.planipets.com/api/'
+    // baseURL: "http://localhost/planipets.com/api/"
     
 });
 

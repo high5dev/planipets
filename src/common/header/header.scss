@@ -182,13 +182,14 @@
     }
   }
 }
-.autocomplete-dropdown-container{
-   position: "absolute";
-   z-index: 1000;
-}
+
 .autocomplete-dropdown-container li {
  list-style: none;
 	border-bottom: 1px solid #EBE9E9;
+	cursor: pointer;
+}
+.autocomplete-dropdown-container li:hover {
+background-color: #e6e6e6;
 }
 
 .autocomplete-dropdown-container {
@@ -199,6 +200,7 @@
   border-top: 1px solid #e6e6e6;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   position: absolute;
-  z-index: 1000;
+   z-index: 1000;
+	padding: 0px 5px;
   border-radius: 0 0 2px 2px;
 }

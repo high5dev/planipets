@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Modal, Button, Input } from 'antd';
-import usePlacesAutocomplete from "use-places-autocomplete";
+import usePlacesAutocomplete,{getGeocode, getLatLng} from "use-places-autocomplete";
 import useOnclickOutside from "react-cool-onclickoutside";
 
 
-const PlacesAutocomplete = () => {
+const PlacesAutocomplete = (porps) => {
   const {
     ready,
     value,
@@ -19,8 +19,15 @@ const PlacesAutocomplete = () => {
 	  types: ["address"],
     },
     debounce: 300,
+	 
   });
 	
+	const [hidValue, setHidValue] = useState("");
+	
+	/*
+	if(porps.inpVal){
+		setValue( porps.inpVal,false);
+	}*/
 	
   const ref = useOnclickOutside(() => {
     // When user clicks outside of the component, we can dismiss
@@ -32,6 +39,7 @@ const PlacesAutocomplete = () => {
     // Update the keyword of the input element
     setValue(e.target.value);
   };
+	
 
   const handleSelect =
     ({ description }) =>
@@ -40,9 +48,15 @@ const PlacesAutocomplete = () => {
       // by setting the second parameter to "false"
       setValue(description, false);
       clearSuggestions();
-
-    
-          console.log("Coordinates: ", {description });
+getGeocode({ address: description })
+        .then((results) => getLatLng(results[0]))
+        .then(({ lat, lng }) => {
+			setHidValue(lat + "," + lng);
+	
+        })
+        .catch((error) => {
+          
+        });
         
     };
 
@@ -61,22 +75,21 @@ const PlacesAutocomplete = () => {
     });
 
   return (
-    <div ref={ref}>
+    <div ref={ref} style={{ width: porps.divWidth }}>
       
 	  <Input
               suffixIcon={null}
-              className="select villa"
+              className="select ant-select"
               showSearch
-              // style={{ width: 200 }}
+               style={{ width: "90%" }}
               
-              optionFilterProp="children"
                value={value}
         onChange={handleInput}
         disabled={!ready}
         placeholder="Ville"
-	  name="locationn"
+	  name="address"
               />
-	  
+	  <Input name="location" id="locationnn" value={hidValue} style={{ display: "none" }} />
       {/* We can use the "status" to decide whether we should display the dropdown or not */}
       {status === "OK" && <ul className="autocomplete-dropdown-container">{renderSuggestions()}</ul>}
     </div>
