@@ -49,7 +49,7 @@ const Appointments = (props) => {
           ) : (
             <div className="card">
               <div className="card-body">
-                <h6 className="fw-bold">No past appointment at the moment.</h6>
+                <h6 className="fw-bold">No appointment in the past.</h6>
               </div>
             </div>
           )}
