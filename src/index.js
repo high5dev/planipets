@@ -8,6 +8,7 @@ import App from "./containers/app";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./i18n/i18n";
+import "antd/dist/antd.css";
 
 const target = document.querySelector("#root");
 

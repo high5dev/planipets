@@ -1,58 +1,72 @@
-import React, { useState } from 'react'
-import { Modal, Button, Input } from 'antd';
-import { Select } from 'antd';
-import { Link, withRouter } from 'react-router-dom'
-import  PlacesAutocomplete from "../../modules/gmap"
+import React, { useState } from "react";
+import { Modal, Button, Input } from "antd";
+import { Select } from "antd";
+import { Link, withRouter } from "react-router-dom";
+import PlacesAutocomplete from "../../modules/gmap";
+import RecentSearches from "../../modules/search";
 
 const { Option } = Select;
-function FilterModal({ isModalVisible,
-    handleOk,
-    handleCancel,
-    history,
-    filter }) {
+function FilterModal({
+  isModalVisible,
+  handleOk,
+  handleCancel,
+  history,
+  filter,
+}) {
+  const [Search, setSearch] = useState({
+    type: "",
+    animal: "",
+    villa: "",
+  });
+  return (
+    <Modal
+      className="filterModal"
+      footer={null}
+      visible={isModalVisible}
+      onOk={handleOk}
+      onCancel={handleCancel}
+      closable={false}
+    >
+      <div className="innerModalDiv">
+        <div className="modalHeading">
+          <h2>
+            Trouvez le toilletteur qui prendra soin de votre fidèle compagnon
+          </h2>
+        </div>
+        <div className="filterInput" onClick={() => console.log(filter)}>
+          <form action="/vet-listings" method="get" style={{ width: "100%" }}>
+            <Input
+              suffix={null}
+              className="select ant-select"
+              placeholder="Professional"
+              name="type"
+            />
 
-    const [Search, setSearch] = useState({
-        type: '', animal: '',villa:''
-    })
-    return (
-        <Modal className="filterModal" footer={null} visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} closable={false}>
-            <div className="innerModalDiv">
-                <div className="modalHeading">
-                    <h2>
-                        Trouvez le toilletteur qui prendra soin de
-                        votre fidèle compagnon
-                    </h2>
-                </div>
-                <div className="filterInput" onClick={() => console.log(filter)}>
-		<form action="/vet-listings" method="get" style={{ width: "100%" }}>
-                    <Input
-                        suffixIcon={null}
-                        className="select ant-select"
-                       
-                        placeholder="Professional"
-						name="type"
-                        
-                    />
+            <Select
+              className="select"
+              defaultValue="Animal"
+              style={{ width: 120, display: "none" }}
+              onChange={(e) =>
+                setSearch({
+                  ...Search,
+                  animal: filter.animals.find((el) => el.id === e).name,
+                })
+              }
+            >
+              {filter.animals &&
+                filter.animals.map((animal, index) => (
+                  <Option key={index} value={animal.id}>
+                    {animal.name}
+                  </Option>
+                ))}
+            </Select>
 
-                    <Select className="select" defaultValue="Animal" style={{ width: 120, display:'none' }}
-                        onChange={(e) => setSearch({
-                            ...Search,
-                            animal: filter.animals.find(el => el.id === e).name
-                        })}
-                    >
-                        {
-                            filter.animals &&
-                            filter.animals.map((animal, index) => <Option key={index} value={animal.id}>{animal.name}</Option>)
-                        }
-                    </Select>
-
-                 <PlacesAutocomplete divWidth="100%"></PlacesAutocomplete>
-
-
-                    {/* <Select
-                        suffixIcon={null}
+            <PlacesAutocomplete divWidth="100%"></PlacesAutocomplete>
+            <RecentSearches className="text-success" />
+            {/* <Select
+                        suffix={null}
                         className="select"
-                        showSearch
+                        
                         style={{ width: 200 }}
                         placeholder="Search to Select"
                         optionFilterProp="children"
@@ -74,10 +88,10 @@ function FilterModal({ isModalVisible,
                         }
                     </Select> */}
 
-                    {/* <Select
-                        suffixIcon={null}
+            {/* <Select
+                        suffix={null}
                         className="select"
-                        showSearch
+                        
                         style={{ width: 200 }}
                         placeholder="Search to Select"
                         optionFilterProp="children"
@@ -100,17 +114,17 @@ function FilterModal({ isModalVisible,
                                 </Option>
                             ))}
                     </Select> */}
-                    {/* <button className='tr'>Trouver votre toiletteur</button> */}
-                    {/* <Link to="/vet-listings"> */}
-                    <button className="modalButton">
-                        Trouver votre toiletteur
-                    </button>
-                    {/* </Link> */}
-					</form>
-                </div>
+            {/* <button className='tr'>Trouver votre toiletteur</button> */}
+            {/* <Link to="/vet-listings"> */}
+            <div>
+              <button className="modalButton">Trouver votre toiletteur</button>
             </div>
-        </Modal>
-    )
+            {/* </Link> */}
+          </form>
+        </div>
+      </div>
+    </Modal>
+  );
 }
 
-export default withRouter(FilterModal)
+export default withRouter(FilterModal);

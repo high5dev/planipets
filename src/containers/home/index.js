@@ -27,7 +27,8 @@ import "./home.scss";
 import FilterModal from "./filterModal";
 import { Input, Select } from "antd";
 
-import  PlacesAutocomplete from "../../modules/gmap";
+import PlacesAutocomplete from "../../modules/gmap";
+import RecentSearches from "../../modules/search";
 
 const { Option } = Select;
 
@@ -36,8 +37,8 @@ function Home(props) {
   const [filter, setFilter] = useState({
     type: "",
     animal: "",
-    professional:"",
-    villa:''
+    professional: "",
+    villa: "",
   });
 
   useEffect(() => {
@@ -64,18 +65,17 @@ function Home(props) {
     setIsModalVisible(false);
   };
   useEffect(() => {
-    console.log(filter)
-  }, [filter])
+    console.log(filter);
+  }, [filter]);
 
   return (
-	
     <div className="homeDivMain">
       <div className="container homeContainer">
         <div className="contentDiv">
           {/* <h2 data-aos="zoom-in" >Groom Your <br />Lovely Pet With us!</h2> */}
           <h2 data-aos="zoom-in">
-            Trouvez le professionnel <br /> dont votre <br /> animal a besoin pour son
-            bien-être
+            Trouvez le professionnel <br /> dont votre <br /> animal a besoin
+            pour son bien-être
           </h2>
           {/* <p data-aos="zoom-in" >Make an appointment online <br /> with your */}
           <p data-aos="zoom-in">
@@ -145,7 +145,6 @@ function Home(props) {
       </div>
       <div className="secondSection">
         <div className="container secondSectionContainer">
-			
           <div className="textDiv">
             {/* <p>Trouvez le toilletteur qui prendra soin de <br />votre fidèle compagnon</p> */}
             <p>
@@ -153,39 +152,37 @@ function Home(props) {
               rendez-vous en ligne pour vos animaux
             </p>
           </div>
-<form action="/vet-listings" method="get" style={{ width: "80%" }}>
-          <div className="buttonDiv" onClick={()=>console.log(props.store)}>
-			  
-          <Input
-                        suffixIcon={null}
-                        className="select ant-select"
-                        showSearch
-                        style={{ width: "60%" }}
-                        placeholder="Professional"
-                        optionFilterProp="children"
-						name="type"
-                        
-                    />
-            <Select
-              className="select villa"
-              name="animal"
-              defaultValue="Animal"
-              onChange={(e) =>
-                setFilter({
-                  ...filter,
-                  animal: props.store.animals.find((el) => el.id === e).name,
-                })
-              }
-           style={{ display:'none' }} >
-              {props.store.animals &&
-                props.store.animals.map((animal, index) => (
-                  <Option key={index} value={animal.id}>
-                    {animal.name}
-                  </Option>
-                ))}
-            </Select>
+          <form action="/vet-listings" method="get" style={{ width: "80%" }}>
+            <div className="buttonDiv" onClick={() => console.log(props.store)}>
+              <Input
+                suffix={null}
+                className="select ant-select"
+                style={{ width: "60%" }}
+                placeholder="Professional"
+                optionFilterProp="children"
+                name="type"
+              />
+              <Select
+                className="select villa"
+                name="animal"
+                defaultValue="Animal"
+                onChange={(e) =>
+                  setFilter({
+                    ...filter,
+                    animal: props.store.animals.find((el) => el.id === e).name,
+                  })
+                }
+                style={{ display: "none" }}
+              >
+                {props.store.animals &&
+                  props.store.animals.map((animal, index) => (
+                    <Option key={index} value={animal.id}>
+                      {animal.name}
+                    </Option>
+                  ))}
+              </Select>
 
-            {/* <button>Animal
+              {/* <button>Animal
               <svg xmlns="http://www.w3.org/2000/svg" width="5.977" height="6.973" viewBox="0 0 5.977 6.973">
                 <g id="Group_9" data-name="Group 9" transform="translate(-907.612 -583.514)">
                   <path id="Icon_ionic-md-arrow-dropup" data-name="Icon ionic-md-arrow-dropup" d="M9,16.488,11.988,13.5l2.988,2.988Z" transform="translate(898.612 570.014)" fill="#3b3b3b" />
@@ -194,12 +191,12 @@ function Home(props) {
               </svg> 
             </button>
               */}
-                   <PlacesAutocomplete divWidth="60%"></PlacesAutocomplete>
-{/* 
+              <PlacesAutocomplete divWidth="60%"></PlacesAutocomplete>
+              {/* 
             <Select
-              suffixIcon={null}
+              suffix={null}
               className="select villa"
-              showSearch
+              
               // style={{ width: 200 }}
               placeholder="Search to Select"
               optionFilterProp="children"
@@ -228,17 +225,24 @@ function Home(props) {
                 ))}
             </Select> */}
 
-           
               {/* <button>Trouver votre toiletteur</button> */}
               <button className="searchButton" type="submit">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-search"
+                  viewBox="0 0 16 16"
+                >
                   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                 </svg>
               </button>
-
-			
-          </div>
-</form>
+            </div>
+            <div className="ms-3">
+              <RecentSearches className="text-white" />
+            </div>
+          </form>
         </div>
       </div>
 
@@ -263,7 +267,8 @@ function Home(props) {
           >
             {/* <h2>You are a <span>pet groomer?</span></h2> */}
             <h2>
-              Vous êtes un professionnel qui travaille<br />
+              Vous êtes un professionnel qui travaille
+              <br />
               <span> auprès d'animaux ?</span>
             </h2>
             {/* <p>Register now to make your life easier</p> */}
@@ -353,7 +358,8 @@ function Home(props) {
               with your pet groomer 24/7 in a few clicks
             </p> */}
             <p>
-              Trouvez l'intervenant idéal pour votre animal.<br /> Prenez rendez-vous en ligne avec lui dès maintenant.
+              Trouvez l'intervenant idéal pour votre animal.
+              <br /> Prenez rendez-vous en ligne avec lui dès maintenant.
             </p>
             <Link to="/vet-listings">
               {/* <button>Make an appointment</button> */}
@@ -395,7 +401,8 @@ function Home(props) {
             </p> */}
             <h2>Trouver le professionnel le plus proche </h2>
             <p>
-              de chez vous afin de prendre rendez-vous pour votre animal. Lancez la recherche selon vos critères et c'est parti !
+              de chez vous afin de prendre rendez-vous pour votre animal. Lancez
+              la recherche selon vos critères et c'est parti !
             </p>
           </div>
 
@@ -412,7 +419,8 @@ function Home(props) {
             </p> */}
             <h2>Trouver le professionnel le plus proche </h2>
             <p>
-              de chez vous afin de prendre rendez-vous pour votre animal. Lancez la recherche selon vos critères et c'est parti !
+              de chez vous afin de prendre rendez-vous pour votre animal. Lancez
+              la recherche selon vos critères et c'est parti !
             </p>
           </div>
 
@@ -429,7 +437,8 @@ function Home(props) {
             </p> */}
             <h2>Trouver le professionnel le plus proche </h2>
             <p>
-              de chez vous afin de prendre rendez-vous pour votre animal. Lancez la recherche selon vos critères et c'est parti !
+              de chez vous afin de prendre rendez-vous pour votre animal. Lancez
+              la recherche selon vos critères et c'est parti !
             </p>
           </div>
         </div>

@@ -64,16 +64,12 @@
           width: 100%;
         }
         .inputDiv {
-         
-          
-			 width: 100%;
+          width: 100%;
           align-items: center;
           position: relative;
           margin: 0px 12px;
           @media screen and (max-width: 1440px) {
-           
             @media screen and (max-width: 1024px) {
-             
             }
             @media screen and (max-width: 600px) {
               width: 100%;
@@ -150,10 +146,9 @@
             position: absolute;
           }
           input {
-            
-          height: 59px;
-          border-radius: 29.5px;
-          box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+            height: 59px;
+            border-radius: 29.5px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
             width: 100%;
             outline: none;
             cursor: default;
